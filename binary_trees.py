@@ -51,15 +51,27 @@ class Tree:
             self.print_post_order(node.right)
             print(node.data, end=" ")
 
+    def bfs(self, node):
 
+        visited = []
+        tracker = []
+        tracker.append(node)
+        while len(tracker) > 0:
+            node = tracker.pop(0)
+            if node:
+                visited.append(node.data)
+                tracker.append(node.left)
+                tracker.append(node.right)
+        print(visited)
 
 def main():
     t = Tree()
-    t.add(3)
     t.add(15)
-    t.add(4)
-    t.add(7)
     t.add(19)
+    t.add(4)
+    t.add(12)
+    t.add(18)
+    t.add(21)
     print("Pre-Order Traversal: ")
     t.print_pre_order(t.root)
     print()
@@ -68,6 +80,9 @@ def main():
     print()
     print("Post-Order Traversal: ")
     t.print_post_order(t.root)
+    print()
+    print("By Level Traversal: ")
+    t.bfs(t.root)
     print()
 
 
